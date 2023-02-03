@@ -1,0 +1,19 @@
+{
+  "name": "flourish-web-sdk-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Flourish-savings/flourish-web-sdk-react.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Flourish-savings/flourish-web-sdk-react/issues"
+  },
+  "homepage": "https://github.com/Flourish-savings/flourish-web-sdk-react#readme"
+}
