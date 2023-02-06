@@ -1,1 +1,1 @@
-export { default as Flourish } from "./View";
+export { default as Flourish } from "./Flourish";
