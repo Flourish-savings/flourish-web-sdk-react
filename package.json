@@ -2,9 +2,15 @@
   "name": "flourish-web-sdk-react",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "files": [
+    "dist"
+  ],
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c"
   },
   "repository": {
     "type": "git",
@@ -15,5 +21,15 @@
   "bugs": {
     "url": "https://github.com/Flourish-savings/flourish-web-sdk-react/issues"
   },
-  "homepage": "https://github.com/Flourish-savings/flourish-web-sdk-react#readme"
+  "homepage": "https://github.com/Flourish-savings/flourish-web-sdk-react#readme",
+  "dependencies": {
+    "@rollup/plugin-commonjs": "^24.0.1",
+    "@rollup/plugin-node-resolve": "^15.0.1",
+    "@rollup/plugin-typescript": "^11.0.0",
+    "@types/react": "^18.0.27",
+    "react": "^18.2.0",
+    "rollup": "^3.13.0",
+    "rollup-plugin-dts": "^5.1.1",
+    "typescript": "^4.9.5"
+  }
 }
