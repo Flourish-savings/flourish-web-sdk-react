@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { emitEvent } from '../events/eventManager';
 import Config from '../config';
 
 type Props = {
@@ -12,6 +13,15 @@ const HomePage = (props: Props) => {
   const endURL = `/?token=${props.token}`;
   const completeURL = `${baseURL}${props.language}${endURL}`;
   console.log('completeURL', completeURL);
+
+  useEffect(() => {
+    window.addEventListener(
+      "message",
+      (ev: MessageEvent<{ type: string; message: string }>) => {
+        emitEvent(ev.data);
+      }
+    );
+  }, []);
 
   return (
     <iframe src={completeURL}></iframe>
