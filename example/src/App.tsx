@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import api from './api';
-import { Flourish } from 'flourish-web-sdk-react';
+import { Flourish } from 'flourish-web-sdk-react'
 
 function App() {
 

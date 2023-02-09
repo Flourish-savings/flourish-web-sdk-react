@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
-import HomePage from './components/HomePage';
-import { onEventReceived } from './events/eventManager';
+import HomePage from './HomePage';
+import { onEventReceived } from '../events/eventManager';
 
 export interface FlourishProps {
   token: string,

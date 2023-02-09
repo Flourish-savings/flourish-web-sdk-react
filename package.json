@@ -1,6 +1,6 @@
 {
   "name": "flourish-web-sdk-react",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": "Flourish React Web SDK",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -35,6 +35,7 @@
     "react": "^18.2.0",
     "react-native-event-listeners": "^1.0.7",
     "react-native-webview": "^11.26.1",
+    "tslib": "^2.5.0",
     "typescript": "^4.9.5"
   },
   "devDependencies": {
