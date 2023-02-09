@@ -1,37 +1,40 @@
 {
   "name": "flourish-web-sdk-react",
   "version": "1.0.1",
-  "description": "",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "description": "Flourish React Web SDK",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "LICENSE",
+    "README.md"
   ],
-  "types": "dist/index.d.ts",
+  "keywords": [
+    "react",
+    "typescript",
+    "awesome-project"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup -c"
+    "build": "yarn build:esm && yarn build:cjs",
+    "build:esm": "tsc",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Flourish-savings/flourish-web-sdk-react.git"
   },
-  "author": "",
+  "author": "Flourish",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Flourish-savings/flourish-web-sdk-react/issues"
   },
   "homepage": "https://github.com/Flourish-savings/flourish-web-sdk-react#readme",
   "dependencies": {
-    "@rollup/plugin-commonjs": "^24.0.1",
-    "@rollup/plugin-node-resolve": "^15.0.1",
-    "@rollup/plugin-typescript": "^11.0.0",
     "@types/react": "^18.0.27",
     "react": "^18.2.0",
     "react-native-event-listeners": "^1.0.7",
     "react-native-webview": "^11.26.1",
-    "rollup": "^3.13.0",
-    "rollup-plugin-dts": "^5.1.1",
     "typescript": "^4.9.5"
   },
   "devDependencies": {
