@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Flourish } from 'flourish-web-sdk-react'
+import Flourish from 'flourish-web-sdk-react'
 import Box from '@mui/material/Box';
 import api from './api';
 

@@ -16,7 +16,7 @@ const App = () => {
 
   useEffect(() => {
       api.get('flourish-access-token').then(response => {
-          signIn(response.data.flourishAccessToken, 'stg')
+          signIn(response.data.flourishAccessToken, 'staging')
       })
   }, [])
 
