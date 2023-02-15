@@ -16,11 +16,19 @@ npm install flourish-web-sdk-react
 yarn add flourish-web-sdk-react
 ```
 
-### Step 2: Using the SDK
+### Step 2: Initializing the SDK
+After adding our module, it is necessary to retrieve an access token from our API, and we strongly recommend that it be done through a backend because the request needs your credentials and it's good to avoid the harmful environment of the web.
 
-After initialization, it is necessary to retrieve an access token from our [API](https://docs.flourishfi.com/#intro), and we recommend that it be done through a backend because the request needs your credentials and it is good to avoid the harmful environment of the web.
+With your accessToken in hand, a call must happen to the signIn method along with your application initialization, which is required to complete the initialization of our component.
+```javascript
+import { signIn } from 'flourish-web-sdk-react'
 
-With your accessToken in hand, it is possible to pass it to the SDK component, along with the desired environment and language, just like this:
+signIn(accessToken, 'staging')
+```
+
+### Step 3: Using the SDK
+
+After initialization and with your accessToken in hand, it is possible to pass it to the SDK component, along with the desired environment and language, just like this:
 
 ```javascript
 import Flourish from 'flourish-web-sdk-react';
@@ -43,7 +51,7 @@ After a successful rendering, you should see something like this.
 <br>
 
 ---
-### Step 3: Listening events
+### Step 4: Listening events
 
 You can register for some events to know when something happens within our platform.
 
@@ -59,4 +67,19 @@ const printEventData = (data: string): void => {
 
 return <Flourish eventCallback={printEventData} />;
 ```
+<br>
 
+| Event name      | Description                                                                                                       |
+|-----------------|-------------------------------------------------------------------------------------------------------------------|
+| GoToAutoPayment | When you need to know when the user clicks to set up an automatic payment on our platform.                        |
+| GoToPayment     | When you need to know when the user clicks to set up a payment on our platform.                                   |
+| TriviaFinished  | When you need to know when the user finishes a Trivia game on our platform.                                       |
+| GoBack          | When you need to know when the user clicks on the back menu button on our platform.                               |
+| RetryLogin      | When you need to know when the accessToken has expired and you need to retrieve a new one on our platform.        |
+<br>
+
+## Example
+Inside this repository, you have an example app to show how to integrate with us:
+
+https://github.com/Flourish-savings/flourish-web-sdk-react/tree/main/example
+<br>
