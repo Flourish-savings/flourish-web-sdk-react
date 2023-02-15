@@ -4715,10 +4715,10 @@ flatted@^3.1.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.7.tgz#609f39207cb614b89d0765b477cb2d437fbf9787"
   integrity sha512-5nqDSxl8nn5BSNxyR3n4I6eDmbolI6WT+QqR547RwxQapgjQBmtktdP+HTBb/a/zLsbzERTONyUB5pefh5TtjQ==
 
-flourish-web-sdk-react@^1.0.8:
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/flourish-web-sdk-react/-/flourish-web-sdk-react-1.0.8.tgz#d795b320587de5b67e3d47a6b9436ad19ac17e24"
-  integrity sha512-zp8TvYcSOLlNepdUE0KKL5DzYdkAnBYlbbxcKgSRosEQp7V7eCeAlfgICsi3SggMIQ3uTPhn19Yf4yNis/mziw==
+flourish-web-sdk-react@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/flourish-web-sdk-react/-/flourish-web-sdk-react-1.1.0.tgz#a3ff9f674bd8ae2b5eeaaa7ace62c96cc7d64ff8"
+  integrity sha512-e+vcjFMS1eJnfyK42wmV5PvA9BBkqnW/vU8fB5NujbhDDiCAifnHVabFTPAmqkRbsrd1U7sZhwOJzlySKSle4A==
   dependencies:
     "@types/react" "^18.0.27"
     react "^18.2.0"
