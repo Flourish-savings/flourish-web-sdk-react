@@ -1,27 +1,53 @@
 import React, { useState, useEffect } from 'react'
 import api from './api';
-import { Flourish } from 'flourish-web-sdk-react'
+import Tabs from '@mui/material/Tabs';
+import Tab from '@mui/material/Tab';
+import Typography from '@mui/material/Typography';
+import Box from '@mui/material/Box';
+import Rewards from './Rewards';
+import { signIn } from 'flourish-web-sdk-react'
 
-function App() {
+const App = () => {
+  const [tabIndex, setTabIndex] = useState(0);
 
-  const [ accessToken, setAccessToken ] = useState('')
+  const handleTabChange = (event: React.SyntheticEvent, value: any) => {
+    setTabIndex(value);
+  };
 
   useEffect(() => {
       api.get('flourish-access-token').then(response => {
-          setAccessToken(response.data.flourishAccessToken)
+          signIn(response.data.flourishAccessToken, 'staging')
       })
   }, [])
 
   return (
-    <Flourish token={accessToken}
-              environment='staging'
-              language='en'
-              eventCallback={printEventData} />
+    <Box>
+      <Box>
+        <Tabs value={tabIndex} onChange={handleTabChange} variant="fullWidth">
+          <Tab label="Home" />
+          <Tab label="Payment" />
+          <Tab label="Rewards" />
+        </Tabs>
+      </Box>
+      <Box>
+        {tabIndex === 0 && (
+          <Box>
+            <Typography>Home Screen</Typography>
+          </Box>
+        )}
+        {tabIndex === 1 && (
+          <Box>
+            <Typography>Payment Screen</Typography>
+          </Box>
+        )}
+        {tabIndex === 2 && (
+          <Box>
+            <Rewards />
+          </Box>
+        )}
+      </Box>
+    </Box>
   );
 }
-
-const printEventData = (data: string): void => {
-  console.log('Event Client side', data);
-};
 
 export default App;
