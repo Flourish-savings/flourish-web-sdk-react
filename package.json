@@ -1,6 +1,6 @@
 {
   "name": "flourish-web-sdk-react",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "description": "Flourish React Web SDK",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -30,9 +30,11 @@
     "url": "https://github.com/Flourish-savings/flourish-web-sdk-react/issues"
   },
   "homepage": "https://github.com/Flourish-savings/flourish-web-sdk-react#readme",
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
   "dependencies": {
     "@types/react": "^18.0.27",
-    "react": "^18.2.0",
     "react-native-event-listeners": "^1.0.7",
     "react-native-webview": "^11.26.1",
     "tslib": "^2.5.0",
