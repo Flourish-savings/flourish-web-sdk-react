@@ -8,8 +8,7 @@ const Rewards = () => {
 
   useEffect(() => {
       api.get('flourish-access-token').then(response => {
-          console.log('ACCESS_TOKEN', response.data.flourishAccessToken);
-          setAccessToken(response.data.flourishAccessToken)
+          setAccessToken(response.data.access_token)
       })
   }, [])
 
