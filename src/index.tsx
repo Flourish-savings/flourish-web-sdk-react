@@ -1,7 +1,6 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import HomePage from './components/HomePage';
 import { api } from './service/api'
-import { onEventReceived } from './events/eventManager';
 
 export interface FlourishProps {
   token: string,
@@ -18,15 +17,12 @@ export const signIn = async (
 };
 
 const Flourish: React.FC<FlourishProps> = (props: FlourishProps) => {
-  useEffect(() => {
-        onEventReceived(props.eventCallback);
-  }, []);
-
   return (
     <HomePage 
       token={props.token} 
       environment={props.environment} 
-      language={props.language} />
+      language={props.language}
+      eventCallback= {props.eventCallback} />
   );
 };
 
