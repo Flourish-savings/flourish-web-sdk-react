@@ -22,5 +22,11 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
+    // "allowSyntheticDefaultImports": true,
+    // "emitDeclarationOnly": true,
+    // "declarationDir": "types",
+    // "paths": {
+    //   "react": [ "./node_modules/@types/react" ]
+    // },
   }
 }
