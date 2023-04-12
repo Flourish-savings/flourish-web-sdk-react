@@ -1,6 +1,6 @@
 {
   "name": "flourish-web-sdk-react",
-  "version": "1.1.10",
+  "version": "1.1.11",
   "description": "Flourish React Web SDK",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Flourish-savings/flourish-web-sdk-react.git"
+    "url": "https://github.com/Flourish-savings/flourish-web-sdk-react.git"
   },
   "author": "Flourish",
   "license": "ISC",
