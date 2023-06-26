@@ -6,7 +6,7 @@ type Props = {
   token: string;
   environment: string;
   language: string;
-  eventCallback: (data: string) => void;
+  eventCallback?: (data: string) => void;
 };
 declare global {
   interface Window {
@@ -25,7 +25,8 @@ const HomePage = (props: Props) => {
       window.customEmitFunction = function customEmitFunction(
         ev: MessageEvent<{ type: string; message: string }>
       ) {
-        emitEvent(ev.data, props.eventCallback);
+        if(props?.eventCallback)
+          emitEvent(ev.data, props.eventCallback);
       };
     }
 
