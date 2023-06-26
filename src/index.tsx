@@ -6,7 +6,7 @@ export interface FlourishProps {
   token: string,
   language: string,
   environment: string,
-  eventCallback: (data: string) => void,
+  eventCallback?: (data: string) => void,
 };
 
 export const signIn = async (
