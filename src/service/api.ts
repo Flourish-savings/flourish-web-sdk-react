@@ -1,4 +1,4 @@
-import Config from '../config';
+import { buildBackEndUrl } from '../config';
 export class Api {
   async signIn(
     access_token: string,
@@ -6,7 +6,7 @@ export class Api {
   ): Promise<{ isValid: boolean }> {
     try {
       const response = await fetch(
-        `${Config.BACKEND_API_URL.get(environment)}/sign_in`,
+        `${buildBackEndUrl(environment)}/sign_in`,
         {
           method: 'POST',
           headers: {

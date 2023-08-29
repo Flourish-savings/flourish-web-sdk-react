@@ -1,10 +1,11 @@
 import React from 'react';
-import Config from '../config';
+import { buildFrontEndUrl } from '../config';
 import { emitEvent } from '../events/eventManager';
 
 type Props = {
   token: string;
   environment: string;
+  version: string;
   language: string;
   eventCallback?: (data: string) => void;
 };
@@ -15,7 +16,7 @@ declare global {
 }
 
 const HomePage = (props: Props) => {
-  const baseURL = Config.FRONTEND_URL.get(props.environment);
+  const baseURL = buildFrontEndUrl(props.environment, props.version);
   const tokenPath = `?token=${props.token}`;
   const languagePath = `&lang=${props.language}`;
   const completeURL = `${baseURL}${tokenPath}${languagePath}`;
