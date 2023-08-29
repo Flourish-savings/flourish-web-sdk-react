@@ -6,6 +6,7 @@ export interface FlourishProps {
   token: string,
   language: string,
   environment: string,
+  version: string,
   eventCallback?: (data: string) => void,
 };
 
@@ -21,6 +22,7 @@ const Flourish: React.FC<FlourishProps> = (props: FlourishProps) => {
     <HomePage 
       token={props.token} 
       environment={props.environment} 
+      version={props.version} 
       language={props.language}
       eventCallback= {props.eventCallback} />
   );

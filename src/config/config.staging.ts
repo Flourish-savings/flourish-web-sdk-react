@@ -1,4 +1,5 @@
 export default {
-  FRONTEND_URL: 'https://platform-stg.flourishfi.com',
+  FRONTEND_URL_V1: 'https://flourish-app-stg.flourishfi.com',
+  FRONTEND_URL_V2: 'https://platform-stg.flourishfi.com',
   BACKEND_API_URL: 'https://staging.flourishsavings.com/api/v1',
 };
