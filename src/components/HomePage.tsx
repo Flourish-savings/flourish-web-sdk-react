@@ -17,9 +17,11 @@ declare global {
 
 const HomePage = (props: Props) => {
   const baseURL = buildFrontEndUrl(props.environment, props.version);
-  const tokenPath = `?token=${props.token}`;
-  const languagePath = `&lang=${props.language}`;
-  const completeURL = `${baseURL}${tokenPath}${languagePath}`;
+
+  const completeURL = props.version === 'v2'
+    ? `${baseURL}?token=${props.token}&lang=${props.language}`
+    : `${baseURL}/${props.language}?token=${props.token}`
+
   console.log(completeURL);
 
   if (typeof window !== 'undefined') {
