@@ -16,7 +16,7 @@ declare global {
 
 const HomePage = (props: Props) => {
   const baseURL = Config.FRONTEND_URL.get(props.environment);
-  const endURL = `/?token=${props.token}`;
+  const endURL = `?token=${props.token}`;
   const completeURL = `${baseURL}${props.language}${endURL}`;
   console.log('completeURL', completeURL);
 
