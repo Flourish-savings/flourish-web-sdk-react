@@ -25,3 +25,7 @@ export const buildFrontEndUrl = (environment: string, version: string) => {
 export const buildBackEndUrl = (environment: string)=> {
   return Config.BACKEND_API_URL.get(environment);
 }
+
+export const get_SDK_VERSION = () => {
+  return StagingConfig.FLOURISH_SDK_APP_VERSION
+}

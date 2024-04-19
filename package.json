@@ -17,7 +17,8 @@
     "flourish"
   ],
   "scripts": {
-    "build": "yarn build:esm && yarn build:cjs",
+    "build": "yarn build:esm && yarn build:cjs && yarn prepare",
+    "prepare": "sed -i -e 's/#FLOURISH_SDK_APP_VERSION#/'$npm_package_version'/g' ./dist/*/config/*.js",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs"
   },
