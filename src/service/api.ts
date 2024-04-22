@@ -1,4 +1,4 @@
-import { buildBackEndUrl, get_SDK_VERSION } from '../config';
+import { buildBackEndUrl, getSdkVersion } from '../config';
 export class Api {
   async signIn(
     access_token: string,
@@ -6,12 +6,13 @@ export class Api {
   ): Promise<{ isValid: boolean }> {
     try {
       const response = await fetch(
-        `${buildBackEndUrl(environment)}/sign_in?sdk_version=${get_SDK_VERSION()}`,
+        `${buildBackEndUrl(environment)}/sign_in`,
         {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${access_token}`,
+            'Sdk-Version': `${getSdkVersion(environment)}`
           },
         }
       );

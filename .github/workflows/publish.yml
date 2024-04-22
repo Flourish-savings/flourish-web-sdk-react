@@ -14,7 +14,7 @@ jobs:
           node-version: 14
           registry-url: 'https://registry.npmjs.org'
       - name: Install dependencies and build 🔧
-        run: npm ci && npm run build
+        run: npm ci && npm run build && npm run prepare && npm run prepare-ci
       - name: Show npm config
         run: npm config ls -l
       - name: Log secrets

@@ -1,5 +1,5 @@
 import React from 'react';
-import { buildFrontEndUrl } from '../config';
+import { buildFrontEndUrl, getSdkVersion } from '../config';
 import { emitEvent } from '../events/eventManager';
 
 type Props = {
@@ -17,10 +17,11 @@ declare global {
 
 const HomePage = (props: Props) => {
   const baseURL = buildFrontEndUrl(props.environment, props.version);
+  const sdk_version = getSdkVersion(props.environment)
 
   const completeURL = props.version === 'v2'
-    ? `${baseURL}?token=${props.token}&lang=${props.language}`
-    : `${baseURL}/${props.language}?token=${props.token}`
+    ? `${baseURL}?token=${props.token}&lang=${props.language}&sdk_version=${sdk_version}`
+    : `${baseURL}/${props.language}?token=${props.token}&sdk_version=${sdk_version}`
 
   console.log(completeURL);
 
@@ -29,7 +30,7 @@ const HomePage = (props: Props) => {
       window.customEmitFunction = function customEmitFunction(
         ev: MessageEvent<{ type: string; message: string }>
       ) {
-        if(props?.eventCallback)
+        if (props?.eventCallback)
           emitEvent(ev.data, props.eventCallback);
       };
     }
