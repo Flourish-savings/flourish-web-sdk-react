@@ -1,6 +1,6 @@
 {
   "name": "flourish-web-sdk-react",
-  "version": "2.1.0-FFE",
+  "version": "2.1.1-FFE",
   "description": "Flourish React Web SDK",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -17,7 +17,9 @@
     "flourish"
   ],
   "scripts": {
-    "build": "yarn build:esm && yarn build:cjs",
+    "build": "yarn build:esm && yarn build:cjs && yarn prepare",
+    "prepare": "sed -i -e 's/#FLOURISH_SDK_APP_VERSION#/'$npm_package_version'/g' ./dist/*/config/*.js",
+    "prepare-ci": "sed -i -e 's/#FLOURISH_SDK_APP_VERSION#/'$npm_package_version'/g' ./src/config/*.ts",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs"
   },

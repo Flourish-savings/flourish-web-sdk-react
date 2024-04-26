@@ -1,4 +1,4 @@
-import { buildBackEndUrl } from '../config';
+import { buildBackEndUrl, getSdkVersion } from '../config';
 export class Api {
   async signIn(
     access_token: string,
@@ -12,6 +12,7 @@ export class Api {
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${access_token}`,
+            'Sdk-Version': `${getSdkVersion(environment)}`
           },
         }
       );
