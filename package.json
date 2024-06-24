@@ -1,6 +1,6 @@
 {
   "name": "flourish-web-sdk-react",
-  "version": "2.1.1-FFE",
+  "version": "2.2.0",
   "description": "Flourish React Web SDK",
   "main": "./dist/cjs/index.js",
   "module": "./dist/esm/index.js",
@@ -17,9 +17,7 @@
     "flourish"
   ],
   "scripts": {
-    "build": "yarn build:esm && yarn build:cjs && yarn prepare",
-    "prepare": "sed -i -e 's/#FLOURISH_SDK_APP_VERSION#/'$npm_package_version'/g' ./dist/*/config/*.js",
-    "prepare-ci": "sed -i -e 's/#FLOURISH_SDK_APP_VERSION#/'$npm_package_version'/g' ./src/config/*.ts",
+    "build": "yarn build:esm && yarn build:cjs",
     "build:esm": "tsc",
     "build:cjs": "tsc --module commonjs --outDir dist/cjs"
   },
@@ -43,6 +41,7 @@
     "@rollup/plugin-commonjs": "^24.0.1",
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@types/react": "^17.0.2",
+    "eventemitter3": "^5.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-native-event-listeners": "^1.0.7",

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import Flourish from 'flourish-web-sdk-react'
 import Box from '@mui/material/Box';
 import api from './api';
+import { MissionActionEvent } from '../../dist/esm/events/eventTypes';
 
 const Rewards = () => {
   const [ accessToken, setAccessToken ] = useState('')
@@ -12,8 +13,9 @@ const Rewards = () => {
       })
   }, [])
 
-  const printEventData = (data: string): void => {
-    console.log('Event Client side', data);
+  const missionActionEventCallback = (missionActionEvent: MissionActionEvent): void => {
+    console.log('Mission event type', missionActionEvent.missionType);
+    console.log('Mission event name', missionActionEvent.missionEvent);
   };
 
   return (
@@ -21,7 +23,7 @@ const Rewards = () => {
       <Flourish token={accessToken}
         environment='staging'
         language='en'
-        eventCallback={printEventData} />
+        missionActionEventCallback={missionActionEventCallback} />
     </Box>
   );
 }

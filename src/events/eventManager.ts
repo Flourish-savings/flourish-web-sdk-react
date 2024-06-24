@@ -1,3 +1,9 @@
-export const emitEvent = (data: any, eventCallback: (arg: any) => any) => {
-  eventCallback(data);
-};
+import { EventEmitter } from 'eventemitter3';
+interface Events {
+    eventName: { data: string };
+    [key: string]: any;
+}
+
+const eventManager = new EventEmitter<Events>();
+
+export default eventManager;
