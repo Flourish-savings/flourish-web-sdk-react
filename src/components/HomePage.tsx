@@ -1,16 +1,12 @@
 import React from 'react';
 import { buildFrontEndUrl, getSdkVersion } from '../config';
-//import emitMissionAction from '../events/eventEmitter';
-//import {emitEvent} from '../events/eventManager';
-import { MissionActionEvent } from '../events/eventTypes';
-import emitMissionAction from '../events/eventEmitter';
+import emitEvent from '../events/eventEmitter';
 
 type Props = {
   token: string;
   environment: string;
   version: string;
   language: string;
-  missionActionEventCallback?: (missionActionEvent: MissionActionEvent) => void;
 };
 declare global {
   interface Window {
@@ -33,12 +29,8 @@ const HomePage = (props: Props) => {
       window.customEmitFunction = function customEmitFunction(
         ev: MessageEvent<{ type: string; message: string }>
       ) {
-        if (props?.missionActionEventCallback){
-          console.log('MEV', ev.data);
-          emitMissionAction(ev.data);  
-        }
-
-        //emitEvent(ev.data, props.missionActionEventCallback);
+        console.log('MEV data', ev.data);
+        emitEvent(ev.data);  
       };
     }
 

@@ -1,8 +1,8 @@
 import React from 'react';
 import HomePage from './components/HomePage';
 import { api } from './service/api'
-import { MissionActionEvent } from './events/eventTypes';
-import handleMissionAction from './events/eventListener';
+import { BackButtonPressedEvent, GiftCardCopyEvent, MissionActionEvent, ReferralCopyEvent, TriviaCloseEvent, TriviaGameFinishedEvent } from './events/eventTypes';
+import { handleBackButtonPressed, handleGenericEvent, handleGiftCardCopy, handleHomeBannerAction, handleMissionAction, handleReferralCopy, handleTriviaClosed, handleTriviaGameFinished } from './events/eventListener';
 
 export interface FlourishProps {
   token: string,
@@ -10,14 +10,13 @@ export interface FlourishProps {
   environment: string,
   version?: string,
   genericEventCallback?: (data: string) => void;
-  backButtonEventCallback?: (data: string) => void;
-  homeBackButtonEventCallback?: (data: string) => void;
-  triviaGameFinishedEventCallback?: (data: string) => void;
+  backButtonEventCallback?: (backButtonPressedEvent: BackButtonPressedEvent) => void;
+  triviaGameFinishedEventCallback?: (triviaGameFinishedEvent: TriviaGameFinishedEvent) => void;
   missionActionEventCallback?: (missionActionEvent: MissionActionEvent) => void;
-  triviaClosedEventCallback?: (data: string) => void;
-  referralCopyEventCallback?: (data: string) => void;
-  homeBannerActionEventCallback?: (data: string) => void;
-  giftCardCopyEventCallback?: (data: string) => void;
+  triviaClosedEventCallback?: (triviaCloseEvent: TriviaCloseEvent) => void;
+  referralCopyEventCallback?: (referralCopyEvent: ReferralCopyEvent) => void;
+  homeBannerActionEventCallback?: (data: {}) => void;
+  giftCardCopyEventCallback?: (giftCardCopyEvent: GiftCardCopyEvent) => void;
 };
 
 export const signIn = async (
@@ -29,12 +28,52 @@ export const signIn = async (
 
 const Flourish: React.FC<FlourishProps> = (props: FlourishProps) => {
 
-  console.log('CALLBACK', props.missionActionEventCallback);
+  handleGenericEvent((data: string) => {
+    console.log('GERENIC_EVENT received:', data);
+    if(props?.genericEventCallback)
+      props?.genericEventCallback(data);
+  });
+
+  handleHomeBannerAction((data: {}) => {
+    console.log('HOME_BANNER_ACTION received:', data);
+    if(props?.homeBannerActionEventCallback)
+      props?.homeBannerActionEventCallback(data);
+  });
   
-  handleMissionAction((mssionActionEvent: MissionActionEvent) => {
-    console.log('MISSION_ACTION received:', mssionActionEvent);
+  handleMissionAction((missionActionEvent: MissionActionEvent) => {
+    console.log('MISSION_ACTION received:', missionActionEvent);
     if(props?.missionActionEventCallback)
-      props?.missionActionEventCallback(mssionActionEvent);
+      props?.missionActionEventCallback(missionActionEvent);
+  });
+
+  handleBackButtonPressed((backButtonPressedEvent: BackButtonPressedEvent) => {
+    console.log('BACK_BUTTON_PRESSED received:', backButtonPressedEvent);
+    if(props?.backButtonEventCallback)
+      props?.backButtonEventCallback(backButtonPressedEvent);
+  });
+
+  handleGiftCardCopy((giftCardCopyEvent: GiftCardCopyEvent) => {
+    console.log('GIFT_CARD_COPY received:', giftCardCopyEvent);
+    if(props?.giftCardCopyEventCallback)
+      props?.giftCardCopyEventCallback(giftCardCopyEvent);
+  });
+
+  handleReferralCopy((referralCopyEvent: ReferralCopyEvent) => {
+    console.log('REFERRAL_COPY received:', referralCopyEvent);
+    if(props?.referralCopyEventCallback)
+      props?.referralCopyEventCallback(referralCopyEvent);
+  });
+
+  handleTriviaClosed((triviaCloseEvent: TriviaCloseEvent) => {
+    console.log('TRIVIA_CLOSED received:', triviaCloseEvent);
+    if(props?.triviaClosedEventCallback)
+      props?.triviaClosedEventCallback(triviaCloseEvent);
+  });
+
+  handleTriviaGameFinished((triviaGameFinishedEvent: TriviaGameFinishedEvent) => {
+    console.log('TRIVIA_GAME_FINISHED received:', triviaGameFinishedEvent);
+    if(props?.triviaGameFinishedEventCallback)
+      props?.triviaGameFinishedEventCallback(triviaGameFinishedEvent);
   });
 
   return (
@@ -42,9 +81,9 @@ const Flourish: React.FC<FlourishProps> = (props: FlourishProps) => {
       token={props.token} 
       environment={props.environment} 
       version={props.version || 'v2'} 
-      language={props.language}
-      missionActionEventCallback={props.missionActionEventCallback} />
+      language={props.language} />
   );
 };
 
 export default Flourish;
+

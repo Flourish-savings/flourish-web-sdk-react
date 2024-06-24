@@ -6,10 +6,4 @@ interface Events {
 
 const eventManager = new EventEmitter<Events>();
 
-export const emitEvent = (data: any, eventCallback: (arg: any) => any) => {
-  console.log('eventManager-emitEvent func', data);
-  eventCallback(data);
-};
-
-
 export default eventManager;
