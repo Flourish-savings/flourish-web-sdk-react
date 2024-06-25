@@ -5,7 +5,7 @@ import Tab from '@mui/material/Tab';
 import Typography from '@mui/material/Typography';
 import Box from '@mui/material/Box';
 import Rewards from './Rewards';
-//import { signIn } from 'flourish-web-sdk-react'
+import { signIn } from 'flourish-web-sdk-react'
 
 const App = () => {
   const [tabIndex, setTabIndex] = useState(0);
@@ -14,11 +14,11 @@ const App = () => {
     setTabIndex(value);
   };
 
-  // useEffect(() => {
-  //     api.get('flourish-access-token').then(response => {
-  //         signIn(response.data.access_token, 'staging')
-  //     })
-  // }, [])
+  useEffect(() => {
+      api.get('flourish-access-token').then(response => {
+          signIn(response.data.access_token, 'staging')
+      })
+  }, [])
 
   return (
     <Box>

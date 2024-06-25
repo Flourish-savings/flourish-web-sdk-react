@@ -41,14 +41,6 @@ return (
     />
 );
 ```
-After a successful rendering, you should see something like this.
-
-<img width="363" src="https://raw.githubusercontent.com/Flourish-savings/flourish-sdk-flutter/main/images/flourish_home.png"/>
-<br>
-<br>
-<img width="363" src="https://raw.githubusercontent.com/Flourish-savings/flourish-sdk-flutter/main/images/flourish_wheel.png"/>
-<br>
-<br>
 
 ---
 ### Step 4: Listening events
@@ -58,22 +50,55 @@ You can register for some events to know when something happens within our platf
 ### Listen our events
 To listen to our events, you will pass a callback function to our Flourish component when you add it to your screen.
 
+### To listen all events
+you can listen to all events at once, to do this, just pass a callback function in the "genericEventCallback" attribute
+
 ```js
 import Flourish from 'flourish-web-sdk-react';
 
-const printEventData = (data: string): void => {
-  console.log('Event Client side', data);
+const genericEventCallback = (eventData: string): void => {
+  console.log('All events here', eventData);
 };
 
-return <Flourish eventCallback={printEventData} />;
+return (
+  <Flourish token={accessToken}
+    environment='staging'
+    language='en'
+    genericEventCallback={genericEventCallback} />
+);
+```
+
+### To listen to a specific event
+You can also if you want to listen to a specific event
+
+```js
+import Flourish from 'flourish-web-sdk-react';
+
+const missionActionEventCallback = (missionActionEvent: MissionActionEvent): void => {
+  console.log('Mission event type', missionActionEvent.missionType);
+  console.log('Mission event name', missionActionEvent.missionEvent);
+};
+
+return (
+  <Flourish token={accessToken}
+    environment='staging'
+    language='en'
+    missionActionEventCallback={missionActionEventCallback}  />
+);
 ```
 <br>
 
+### Events to listen
+here you have all events we will return
+
 | Event name      | Description                                                                                                       |
 |-----------------|-------------------------------------------------------------------------------------------------------------------|
-| BACK_BUTTON_PRESSED | When you need to know when the user clicks on the back menu button on our platform.                        |
+| BACK_BUTTON_PRESSED | When you need to know when the user clicks on the back menu button on our platform.
+| HOME_BACK_BUTTON_PRESSED | When you need to know when the user clicks on the back menu button when on the home screen of our platform.           |
 | MISSION_ACTION     | When you need to know when the user clicks on a mission card                                |
 | TRIVIA_GAME_FINISHED  | When you need to know when the user finishes a Trivia game on our platform.                                       |
+| TRIVIA_CLOSED  | When you need to know when the user closed the Trivia game on our platform.                                       |
+| GIFT_CARD_COPY  | When you need to know when the user copy the Gift code to the clipboard area.                                       |
 | REFERRAL_COPY          | When you need to know when the user copy the referral code to the clipboard area.                             |
 | HOME_BANNER_ACTION      | When you need to know when the user clicks on the home banner.       |
 | ERROR      | When you need to know when a error happened.      |

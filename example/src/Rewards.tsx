@@ -13,6 +13,10 @@ const Rewards = () => {
       })
   }, [])
 
+  const genericEventCallback = (eventData: string): void => {
+    console.log('Mission event type', eventData);
+  };
+
   const missionActionEventCallback = (missionActionEvent: MissionActionEvent): void => {
     console.log('Mission event type', missionActionEvent.missionType);
     console.log('Mission event name', missionActionEvent.missionEvent);
@@ -23,6 +27,7 @@ const Rewards = () => {
       <Flourish token={accessToken}
         environment='staging'
         language='en'
+        genericEventCallback={genericEventCallback}
         missionActionEventCallback={missionActionEventCallback} />
     </Box>
   );
