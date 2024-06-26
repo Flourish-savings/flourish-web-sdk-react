@@ -88,6 +88,8 @@ return (
 ```
 <br>
 
+You can find our all mapped events here: https://github.com/Flourish-savings/flourish-web-sdk-react/blob/main/src/events/eventTypes.ts
+
 ### Events to listen
 here you have all events we will return
 

@@ -21,15 +21,13 @@ const HomePage = (props: Props) => {
   const completeURL = props.version === 'v2'
     ? `${baseURL}?token=${props.token}&lang=${props.language}&sdk_version=${sdk_version}`
     : `${baseURL}/${props.language}?token=${props.token}&sdk_version=${sdk_version}`
-
-  console.log('COMPLETED2', completeURL);
-
+    
   if (typeof window !== 'undefined') {
     if (!window.customEmitFunction) {
       window.customEmitFunction = function customEmitFunction(
         ev: MessageEvent<{ type: string; message: string }>
       ) {
-        console.log('MEV data', ev.data);
+        console.log('Event data', ev.data);
         emitEvent(ev.data);  
       };
     }

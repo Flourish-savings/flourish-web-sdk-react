@@ -14,11 +14,11 @@ const App = () => {
     setTabIndex(value);
   };
 
-  useEffect(() => {
-      api.get('flourish-access-token').then(response => {
-          signIn(response.data.access_token, 'staging')
-      })
-  }, [])
+  // useEffect(() => {
+  //     api.get('flourish-access-token').then(response => {
+  //         signIn(response.data.access_token, 'staging')
+  //     })
+  // }, [])
 
   return (
     <Box>

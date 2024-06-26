@@ -1,8 +1,53 @@
 import React from 'react';
 import HomePage from './components/HomePage';
 import { api } from './service/api'
-import { BackButtonPressedEvent, GiftCardCopyEvent, MissionActionEvent, ReferralCopyEvent, TriviaCloseEvent, TriviaGameFinishedEvent } from './events/eventTypes';
-import { handleBackButtonPressed, handleGenericEvent, handleGiftCardCopy, handleHomeBannerAction, handleMissionAction, handleReferralCopy, handleTriviaClosed, handleTriviaGameFinished } from './events/eventListener';
+import { 
+  handleBackButtonPressed, 
+  handleGenericEvent, 
+  handleGiftCardCopy, 
+  handleHomeBannerAction, 
+  handleMissionAction, 
+  handleReferralCopy, 
+  handleTriviaClosed, 
+  handleTriviaGameFinished 
+} from './events/eventListener';
+
+export type MissionActionEvent = {
+  missionType: string;
+  missionEvent: string;
+};
+
+export type BackButtonPressedEvent = {
+  path: string;
+};
+
+export type GiftCardCopyEvent = {
+  giftCardCode: string;
+};
+
+export type ReferralCopyEvent = {
+  referralCode: string;
+};
+
+export type TriviaCloseEvent = {
+  hits: number;
+  questions: number;
+  time: string;
+  prizes: Prize[];
+};
+
+export type TriviaGameFinishedEvent = {
+  hits: number;
+  questions: number;
+  time: string;
+  prizes: Prize[];
+};
+
+export type Prize = {
+  label: string;
+  category: string;
+  quantity: number;
+};
 
 export interface FlourishProps {
   token: string,
@@ -29,49 +74,41 @@ export const signIn = async (
 const Flourish: React.FC<FlourishProps> = (props: FlourishProps) => {
 
   handleGenericEvent((data: string) => {
-    console.log('GERENIC_EVENT received:', data);
     if(props?.genericEventCallback)
       props?.genericEventCallback(data);
   });
 
   handleHomeBannerAction((data: {}) => {
-    console.log('HOME_BANNER_ACTION received:', data);
     if(props?.homeBannerActionEventCallback)
       props?.homeBannerActionEventCallback(data);
   });
   
   handleMissionAction((missionActionEvent: MissionActionEvent) => {
-    console.log('MISSION_ACTION received:', missionActionEvent);
     if(props?.missionActionEventCallback)
       props?.missionActionEventCallback(missionActionEvent);
   });
 
   handleBackButtonPressed((backButtonPressedEvent: BackButtonPressedEvent) => {
-    console.log('BACK_BUTTON_PRESSED received:', backButtonPressedEvent);
     if(props?.backButtonEventCallback)
       props?.backButtonEventCallback(backButtonPressedEvent);
   });
 
   handleGiftCardCopy((giftCardCopyEvent: GiftCardCopyEvent) => {
-    console.log('GIFT_CARD_COPY received:', giftCardCopyEvent);
     if(props?.giftCardCopyEventCallback)
       props?.giftCardCopyEventCallback(giftCardCopyEvent);
   });
 
   handleReferralCopy((referralCopyEvent: ReferralCopyEvent) => {
-    console.log('REFERRAL_COPY received:', referralCopyEvent);
     if(props?.referralCopyEventCallback)
       props?.referralCopyEventCallback(referralCopyEvent);
   });
 
   handleTriviaClosed((triviaCloseEvent: TriviaCloseEvent) => {
-    console.log('TRIVIA_CLOSED received:', triviaCloseEvent);
     if(props?.triviaClosedEventCallback)
       props?.triviaClosedEventCallback(triviaCloseEvent);
   });
 
   handleTriviaGameFinished((triviaGameFinishedEvent: TriviaGameFinishedEvent) => {
-    console.log('TRIVIA_GAME_FINISHED received:', triviaGameFinishedEvent);
     if(props?.triviaGameFinishedEventCallback)
       props?.triviaGameFinishedEventCallback(triviaGameFinishedEvent);
   });
