@@ -26,7 +26,6 @@ const emitEvent = (event: any) => {
     default:
       eventManager.emit('GERENIC_EVENT', event);
   }
-  eventManager.emit('GERENIC_EVENT', event);
 }
 
 

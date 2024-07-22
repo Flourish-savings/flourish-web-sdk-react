@@ -27,8 +27,7 @@ const HomePage = (props: Props) => {
       window.customEmitFunction = function customEmitFunction(
         ev: MessageEvent<{ type: string; message: string }>
       ) {
-        console.log('Event data', ev.data);
-        emitEvent(ev.data);  
+        emitEvent(ev.data);
       };
     }
 
