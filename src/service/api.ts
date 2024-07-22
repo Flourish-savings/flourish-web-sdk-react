@@ -16,8 +16,7 @@ export class Api {
           },
         }
       );
-      const res = await response.json();
-      console.log(res);
+      await response.json();
       return response.status === 200 ? { isValid: true } : { isValid: false };
     } catch (error) {
       console.error(error);
